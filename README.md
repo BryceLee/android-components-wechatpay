@@ -2,14 +2,14 @@
 A android component of wechatpay for dev qucikly.
 # Download
 ```
-Step1 .Add it in your root build.gradle at the end of repositories:
+//Add it in your root build.gradle at the end of repositories:
 allprojects {
 		repositories {
 			...
 			maven { url 'https://jitpack.io' }
 		}
 	}
-Step 2. Add the dependency :
+//Add the dependency :
 dependencies {
 	        implementation 'com.github.BryceLee:android-components-wechatpay:1.0'
 	}
@@ -64,7 +64,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
     <activity
         android:name=".wxapi.WXPayEntryActivity"
         android:exported="true"
-        android:launchMode="singleTop"/> <!-- WX END -->
+        android:launchMode="singleTop"/> 
 ```
 # How to use
 ## If your order message from server have the same data struture with wechat document,you can use this componet:
