@@ -9,6 +9,11 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import org.json.JSONObject;
 
+/**
+ * @Auther:BryceLee leezx1993@163.com
+ * @Date: 2019-08-06
+ * @Desc:https://github.com/BryceLee/android-components-wechatpay
+ */
 public class WeChatPay {
   private String appId;
   private String partnerId;
