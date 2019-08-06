@@ -11,11 +11,11 @@ allprojects {
 	}
 Step 2. Add the dependency :
 dependencies {
-	        implementation 'com.github.BryceLee:android-components-wechatpay:Tag'
+	        implementation 'com.github.BryceLee:android-components-wechatpay:1.0'
 	}
 ```
-# Firstly
-## add the WXPayEntryActivity in your_app_packagename.wxapi.WXPayEntryActivity
+# Firstly (this step is necessary ，otherwise wechat pay sdk can not work)
+### add the WXPayEntryActivity in your_app_packagename.wxapi.WXPayEntryActivity
 ```
 public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEventHandler {
 
@@ -44,6 +44,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
 
     @Override
     public void onResp(BaseResp resp) {
+        //add your code logic...
         Log.d(TAG, "onPayFinish, errCode = " + resp.errCode);
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
@@ -57,6 +58,13 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
         finish();
     }
 }
+```
+### add WXPayEntryActivity in your AndroidManifest.xml:
+```
+    <activity
+        android:name=".wxapi.WXPayEntryActivity"
+        android:exported="true"
+        android:launchMode="singleTop"/> <!-- WX END -->
 ```
 # How to use
 ## If your order message from server have the same data struture with wechat document,you can use this componet:
@@ -81,4 +89,8 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
         .create();
     weChatPay.pay();
 ```
+## attention
+### you should add configuration on the wechat background,for example:package name,signature and so on.
+[wechat pay backgroud setting](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=8_5)
+
 [wechat pay document](https://pay.weixin.qq.com/wiki/doc/api/app/app.php?chapter=9_12&index=2)
