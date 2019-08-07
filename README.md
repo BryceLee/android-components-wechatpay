@@ -16,8 +16,10 @@ dependencies {
 ```
 ## Firstly 
 (this step is necessary ，otherwise wechat pay sdk can not work)
-- add the WXPayEntryActivity under your_app_packagename.wxapi
+- add the WXPayEntryActivity under your_app_package_name.wxapi
 ```
+package your_app_package_name.wxapi
+...
 public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEventHandler {
 
     private static final String TAG = "MicroMsg.SDKSample.WXPayEntryActivity";
@@ -45,7 +47,9 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
 
     @Override
     public void onResp(BaseResp resp) {
+
         //add your code logic...
+        
         Log.d(TAG, "onPayFinish, errCode = " + resp.errCode);
         if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {
             if (resp.errCode == BaseResp.ErrCode.ERR_OK) {
@@ -68,7 +72,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
         android:launchMode="singleTop"/> 
 ```
 # How to use
-- If your order message from server have the same data struture with wechat document,you can use this componet:
+- If your order message from server have the same data struture with wechat document,you can use this api:
 ```
  WeChatPay weChatPay = new WeChatPay.Builder()
     .with(this)
