@@ -4,18 +4,19 @@ A android component of wechatpay for dev qucikly.
 ```
 //Add it in your root build.gradle at the end of repositories:
 allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+    repositories {
+		...
+		maven { url 'https://jitpack.io' }
+	    }
 	}
 //Add the dependency :
 dependencies {
 	        implementation 'com.github.BryceLee:android-components-wechatpay:1.0'
 	}
 ```
-# Firstly (this step is necessary ，otherwise wechat pay sdk can not work)
-### add the WXPayEntryActivity in your_app_packagename.wxapi.WXPayEntryActivity
+## Firstly 
+(this step is necessary ，otherwise wechat pay sdk can not work)
+- add the WXPayEntryActivity under your_app_packagename.wxapi
 ```
 public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEventHandler {
 
@@ -59,7 +60,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
     }
 }
 ```
-### add WXPayEntryActivity in your AndroidManifest.xml:
+- add WXPayEntryActivity in your AndroidManifest.xml:
 ```
     <activity
         android:name=".wxapi.WXPayEntryActivity"
@@ -67,7 +68,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
         android:launchMode="singleTop"/> 
 ```
 # How to use
-## If your order message from server have the same data struture with wechat document,you can use this componet:
+- If your order message from server have the same data struture with wechat document,you can use this componet:
 ```
  WeChatPay weChatPay = new WeChatPay.Builder()
     .with(this)
@@ -75,7 +76,7 @@ public class WXPayEntryActivity extends AppCompatActivity implements IWXAPIEvent
     .createFromJson("the json String of your order message from your service")
     weChatPay.pay();
 ```
-## You can also use builder pattern api like this:
+- You can also use builder pattern api like this:
 ```
  WeChatPay weChatPay = new WeChatPay.Builder()
         .with(this)
